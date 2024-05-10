@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>  
 </head>
 
 <body>
@@ -29,43 +29,40 @@
     </div>
     <script>
 
-        $(document).ready(function () {
-
-            $(".btn").click(function () {
-
-                $.ajax({
-                    url: "https://smitpatel1203.github.io/Insta-post-downloader/" + $("input").val(),
-                    type: 'GET',
-                    datatype: "html",
-                    crossDomain: true,
-                    success: function (data) {
-                        if ($(data).filter('meta[property="og:video"]').attr("content")) {
-                            var downloadlink = $(data).filter('meta[property="og:video"]').attr("content");
-                            var a = $("<a>")
-                                .attr("href", downloadlink)
-                                .attr("download", "video.mp4")
-                                .appendTo("body");
-                            a[0].click();
-                            a.remove();
-                        } else {
-                            var downloadlink = $(data).filter('meta[property="og:image"]').attr("content");
-                            var a = $("<a>")
-                                .attr("href", downloadlink)
-                                .attr("download", "img.png")
-                                .appendTo("body");
-                            a[0].click();
-                            a.remove();
-                        }
-
-                    },
-                    error: function (xhr, status, error) {
-                        console.error("Error:", status, error); // Log the error to the console
-                    }
-                });
-
-            });
-        });
-
+$(document).ready(function() {
+  
+    $(".btn").click(function() {
+  
+      $.ajax({
+         url:"https://smitpatel1203.github.io/Insta-post-downloader/" + $("input").val(),
+         type:'GET',
+         datatype: "json",
+         crossDomain: true,
+         success: function(data){
+           if ($(data).filter('meta[property="og:video"]').attr("content") ) {
+             var downloadlink = $(data).filter('meta[property="og:video"]').attr("content");
+             var a = $("<a>")
+              .attr("href", downloadlink)
+              .attr("download", "video.mp4")
+              .appendTo("body");
+              a[0].click();
+              a.remove();
+           } else {
+             var downloadlink = $(data).filter('meta[property="og:image"]').attr("content");
+             var a = $("<a>")
+              .attr("href", downloadlink)
+              .attr("download", "img.png")
+              .appendTo("body");
+              a[0].click();
+              a.remove();
+           }
+             
+         }
+      });
+      
+    });
+    });
+  
     </script>
 </body>
 
