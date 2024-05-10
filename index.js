@@ -4,7 +4,7 @@ $(document).ready(function() {
     $(".btn").click(function() {
   
       $.ajax({
-         url:"https:192.168.0.85:5500/Prectise/Pan-code/Index.html" + $("input").val(),
+         url:"https://smitpatel1203.github.io/Insta-post-downloader/" + $("input").val(),
          type:'GET',
          datatype: "jsonp",
          crossDomain: true,
